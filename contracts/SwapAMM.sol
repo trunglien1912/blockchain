@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.5.16;
 
 import {ERC20Interface} from "./ERC20Interface.sol";
 
-contract CPAMM {
-    ERC20Interface public immutable token0;
-    ERC20Interface public immutable token1;
+contract SwapAMM {
+
+    ERC20Interface public  token0;
+    ERC20Interface public  token1;
 
     uint public reserve0;
     uint public reserve1;
@@ -13,7 +14,8 @@ contract CPAMM {
     uint public totalSupply;
     mapping(address => uint) public balanceOf;
 
-    constructor(address _token0, address _token1) {
+
+    function _newCaPMM(ERC20Interface _token0, ERC20Interface _token1) public  {
         token0 = ERC20Interface(_token0);
         token1 = ERC20Interface(_token1);
     }
@@ -45,8 +47,8 @@ contract CPAMM {
 
         bool isToken0 = _tokenIn == address(token0);
         (
-            IERC20 tokenIn,
-            IERC20 tokenOut,
+            ERC20Interface tokenIn,
+            ERC20Interface tokenOut,
             uint reserveIn,
             uint reserveOut
         ) = isToken0
