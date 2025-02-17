@@ -1,6 +1,5 @@
 # blockchain
 
-
 mkdir node01 node02 node03
 
 ./geth --datadir node01 account new
